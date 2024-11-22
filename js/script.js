@@ -7,6 +7,7 @@
     // })
 
     const titleClickHandler = function (event) {
+        event.preventDefault();
         const clickedElement = this;
         console.log('Link was clicked');
 
@@ -29,6 +30,9 @@
         }
 
         /* get 'href' attribute from the clicked link */
+        const activeAttribute = clickedElement.getAttribute('href');
+        console.log('clicked element active attribute: ', activeAttribute)
+
         /* find the correct article using the selector (value of 'href' attribute) */
         /* add class 'active' to the correct article */
     }
