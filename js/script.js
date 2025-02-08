@@ -98,25 +98,27 @@
         for (let article of articles) {
         /* [DONE] find tags wrapper */
             const tagsList = article.querySelector(optArticleTagsSelector);
-        /* [DONE] make html variable with empty string */
+            /* [DONE] make html variable with empty string */
             let html='';
-        /* [DONE] get tags from data-tags attribute */
+            /* [DONE] get tags from data-tags attribute */
             const articleTags = article.getAttribute('data-tags');
-            // console.log('articleTags: ', articleTags);
-        /* [DONE] split tags into array */
+            console.log('articleTags: ', articleTags);
+            /* [DONE] split tags into array */
             const articleTagsArray = articleTags.split(' ');
 
-        /* [DONE] START LOOP: for each tag */
+            /* [DONE] START LOOP: for each tag */
             for(let tag of articleTagsArray) {
-        /* [DONE] generate HTML of the link */
+                /* [DONE] generate HTML of the link */
                 // console.log('tag: ', tag);
                 const tagHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
-        /* [DONE] add generated code to html variable */
+                // console.log('tagHTML: ', tagHTML);
+                /* [DONE] add generated code to html variable */
                 html = html + tagHTML;
+                // console.log('html: ', html);
             }
-        /* [DONE] END LOOP: for each tag */
+            /* [DONE] END LOOP: for each tag */
 
-        /* [DONE] insert HTML of all the links into the tags wrapper */
+            /* [DONE] insert HTML of all the links into the tags wrapper */
             tagsList.innerHTML = html;
         /* [DONE] END LOOP: for every article: */
         }
@@ -143,7 +145,7 @@
         /* [DONE] START LOOP: for each active tag link */
         for (let activeTag of activeTags){
             /* [DONE] remove class active */
-            active.classList.remove('active');
+            activeTag.classList.remove('active');
         }
         /* [DONE] END LOOP: for each active tag link */
 
@@ -158,20 +160,20 @@
         /* [DONE] END LOOP: for each found tag link */
 
         /* [DONE] execute function "generateTitleLinks" with article selector as argument */
-        generateTitleLinks('[data-tags~="'+tag+'"]');
-    }
+        generateTitleLinks('[data-tags~="' + tag + '"]');
+    };
 
     const addClickListenersToTags = function(){
         /* [DONE] find all links to tags */
         const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
-        
+
         /* [DONE] START LOOP: for each link */
         for(let link of tagLinks){
             /* [DONE] add tagClickHandler as event listener for that link */
             link.addEventListener('click', tagClickHandler);
         }
         /* [DONE] END LOOP: for each link */
-    }
+    };
 
     addClickListenersToTags();
 }
