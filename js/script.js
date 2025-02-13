@@ -102,7 +102,7 @@
     }
 
     const generateTags = function () {
-        /* [NEW] create a new variable allTags with an empty object */
+        /* [DONE] [NEW] create a new variable allTags with an empty object */
         let allTags ={};
 
         /* [DONE] find all articles */
@@ -131,9 +131,9 @@
                 /* [DONE] add generated code to html variable */
                 html = html + tagHTML;
 
-                /* [NEW] check if this link is NOT already in allTags */
+                /* [DONE] [NEW] check if this link is NOT already in allTags */
                 if(!allTags[tag]){
-                    /* [NEW] add tag to allTags object */
+                    /* [DONE] [NEW] add tag to allTags object */
                     allTags[tag] = 1;
                 } else {
                     allTags[tag]++;
@@ -146,24 +146,23 @@
         /* [DONE] END LOOP: for every article: */
         }
 
-        /* [NEW] find list of tags in right column */
+        /* [DONE] [NEW] find list of tags in right column */
         const tagList = document.querySelector(optTagsListSelector);
 
-        /* [NEW] create variable for all links HTML code */
+        /* [DONE] [NEW] create variable for all links HTML code */
         const tagsParams = calculateTagsParams(allTags);
-        // console.log('tagsParams: ', tagsParams);
         let allTagsHTML = '';
 
-        /* [NEW] START LOOP: for each tag in allTags: */
+        /* [DONE] [NEW] START LOOP: for each tag in allTags: */
         for(let tag in allTags){
-            /* [NEW] generate code of a link and add it to allTagsHTML */
+            /* [DONE] [NEW] generate code of a link and add it to allTagsHTML */
             const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li> ';
 
             allTagsHTML += tagLinkHTML;
         }
-        /* [NEW] END LOOP: for each tag in allTags: */
+        /* [DONE] [NEW] END LOOP: for each tag in allTags: */
 
-        /*[NEW] add HTML from allTagsHTML to tagList */
+        /*[DONE] [NEW] add HTML from allTagsHTML to tagList */
         tagList.innerHTML = allTagsHTML;
 
         //[DONE] add class=list-horizontal to tags-list in right block
@@ -223,7 +222,7 @@
 
     addClickListenersToTags();
 
-    const generateAuthors = function () { //TODO: wyświetlanie artykułów po autorze w prawym bloku nie działa
+    const generateAuthors = function () {
         let allAuthors = {};
 
         const articles = document.querySelectorAll(optArticleSelector);
@@ -231,7 +230,7 @@
         for(let article of articles){
             const authorWrapper = article.querySelector(optArticleAuthorSelector);
             const articleAuthor = article.getAttribute('data-author');
-            const authorHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
+            const authorHTML = '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a></li>';
 
             authorWrapper.innerHTML = authorHTML;
 
@@ -248,7 +247,7 @@
         let allAuthorsHTML = '';
         
         for(let author in allAuthors){
-            const authorLinkHTML = '<li><a href=#author-' + author + '">' + author + ' (' + allAuthors[author] + ')</a></li>';
+            const authorLinkHTML = '<li><a href="#author-' + author + '">' + author + ' (' + allAuthors[author] + ')</a></li>';
 
             allAuthorsHTML += authorLinkHTML;
         }
