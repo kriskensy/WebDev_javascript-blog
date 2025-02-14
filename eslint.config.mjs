@@ -17,6 +17,7 @@ export default [
       globals: {
         document: 'readonly', // Definiowanie globalnych zmiennych
         console: 'readonly',
+        Handlebars: 'readonly',
       },
     },
     rules: {
