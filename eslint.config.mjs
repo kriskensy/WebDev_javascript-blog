@@ -1,21 +1,21 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 
-// Konwersja do nowego formatu flat-config
+//Conversion to new flat-config format
 const compat = new FlatCompat({
   baseDirectory: import.meta.url,
   resolvePluginsRelativeTo: import.meta.url,
 });
 
 export default [
-  js.configs.recommended,  // Domyślne ustawienia zalecane przez ESLint
+  js.configs.recommended,  //Default settings recommended by ESLint
   {
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 2015,
       sourceType: 'module',
       globals: {
-        document: 'readonly', // Definiowanie globalnych zmiennych
+        document: 'readonly', //Defining global variables
         console: 'readonly',
         Handlebars: 'readonly',
       },
